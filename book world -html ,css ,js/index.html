@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookWorld</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <link rel="stylesheet" href="https://fonts.google.com/share?query=pop"> 
+
+   <div class="navbar"> 
+     <h1>Book World</h1>
+   </div>
+  
+   <div class="container">
+        <div class="book-container">
+           <h2>Wings of Fire</h2>
+           <h4>Abdul Kalam</h4> <br>
+           <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus possimus hic esse non molestiae officia commodi aspernatur praesentium optio, voluptates dolorem quis eligendi, molestias quae provident nostrum corporis! Nihil, veniam!</p>
+           <button onclick="deleteBookContainer(event)">delete</button>
+        </div>
+   </div>
+
+   <div class="pop-overlay">  </div>
+      <div class="pop-content">
+        <h2>Add Book</h2>
+        <form >
+        <input type="text" placeholder="Book name" id="bookname">
+        <input type="text" placeholder="Book Author" id="authorname">
+        <textarea name="" id="" placeholder="Description..." id="bookdetails"></textarea>
+        <button id="add-entry">Add</button>
+        <button id="cancel-pop">Cancel</button>
+    </form>
+      </div>
+      
+ <button class="add-button">+</button>
+ <script src="script.js"></script>
+
+</body>
+</html>

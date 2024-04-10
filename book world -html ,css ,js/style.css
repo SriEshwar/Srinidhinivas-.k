@@ -1,0 +1,119 @@
+*{
+    margin :0;
+    padding: 0;
+}
+body{
+    font-family: 'poppins', sans-serif;
+}
+
+.navbar{
+    background-color: orangered;
+    padding: 20px;
+}
+
+.container{
+    padding: 30px;
+    
+}
+
+.book-container{
+    margin: 20px;
+    padding: 20px; 
+    border: 50px;
+    border-radius: 20px;
+    width: 25%;
+    background-color: black;
+    color: white;
+    word-spacing: 5px;
+    display: inline-block;
+    vertical-align: top;
+
+}
+
+.book-container h2{
+    color: orangered;
+}
+.book-container button{
+    background-color: orangered;
+    color: black;
+    padding: 5px;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    border: none;
+}
+
+.add-button{
+    border-radius: 100%;
+    background-color: orangered;
+    color: black;
+    padding: 10px;
+    font-size: 30px;
+    position: fixed;
+    border: none;
+    right: 25px;
+    bottom: 25px;
+
+}
+
+.pop-overlay{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0.7;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display:none; 
+   
+}
+
+.pop-content{
+    padding: 20px;
+    width: 30%;
+    background-color: orangered;
+    color: black;
+    border-radius: 10px;
+    z-index: 2;
+    position: absolute;
+    top:20%;
+    left: 35%;
+    display: none;
+}
+
+.pop-content input{
+background-color: transparent;
+border: none;
+width: 100%;
+margin: 5px;
+padding: 5px;
+font-size: 20px;
+border-bottom: solid black;
+}
+
+.pop-content textarea{
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+    font-size: 20px;
+    border: solid black;
+    }
+
+.pop-content button{
+    background-color: black;
+    border-radius: 20px;
+    border: none;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+}
+
+.pop-content input:focus{
+    outline: none;
+}
+
+.pop-content textarea:focus{
+    outline: none;}
