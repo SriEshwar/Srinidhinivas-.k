@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index1.css">
+</head>
+<body>
+  <div class="navbar">
+    <nav>
+        <h1>Happy Feet</h1>
+
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="about.html">About us</a></li>
+            <li><a href="category.html">Category</a></li>
+            <input type="text" placeholder="search">
+            <a href="cart_details.html"><img src="image/cart.jpg" alt=".."></a>
+            
+        </ul>
+    </nav>
+   </div>
+
+   <div class=" container">
+      <div id="text_area">
+          <h1>Styling Shoes For You</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            odit ducimus reprehenderit suscipit consectetur vero in necessitatibus
+          </p>
+          <a href="category.html"><button>Buy now</button></a>
+      </div>
+
+      <div id="container_display">
+          <img src="image/disp1.jpg" alt="image loading..." id="big_image">
+      </div>
+      <div class="image_option">
+        <img src="image/disp1.jpg" alt="loading" id="image1" onclick="change_image(src)">
+        <img src="image/disp2.jpg" alt="loading" id="image2" onclick="change_image(src)">
+        <img src="image/disp3.jpg" alt="loading" id="image3" onclick="change_image(src)">
+
+      </div>
+
+
+   </div>
+   <script>
+
+    var image1 = (document.getElementById('image1')).src;
+    var image2 = (document.getElementById('image2')).src;
+    var image3 = (document.getElementById('image3')).src;
+
+    function change_image(imageSrc) {
+    var bigImage = document.getElementById('big_image');
+    big_image.src = imageSrc;
+  }
+   </script>
+</body>
+</html>

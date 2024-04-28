@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="home">
+        <a href="index1.html"> <img src="image/home.jpg" alt=""></a>
+    </div>
+    <div class="about">
+        <h1>About us</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto quos praesentium accusantium assumenda dolores molestiae, consequuntur, delectus modi a sapiente at facilis nisi autem maxime saepe tempora, error inventore iusto.</p>
+    </div>
+
+    <div class="image_float">
+        <marquee behavior="scroll" direction="right" scrollamount="10">
+          <img src="image/img 1.avif" alt="loading"> 
+          <img src="image/img 2.webp" alt="loading"> 
+          <img src="image/img 3.avif" alt="loading">
+          <img src="image/img 1.avif" alt="loading"> 
+          <img src="image/img 2.webp" alt="loading"> 
+          <img src="image/img 3.avif" alt="loading">
+        </marquee>
+    </div>
+
+    <div class="contact">
+        <h3 style="margin-bottom: 30px;">Contact</h3>
+        <p>+91 123456789</p>
+        <p>shoeworld@gmail.com</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores, saepe porro illum libero quo culpa ullam minus optio voluptatum odit!</p>
+    </div>
+</body>
+
+<style>
+
+    *{
+        padding: 0;
+        margin: 0;
+
+    }
+     .about{
+
+       text-align: center;
+     margin: 20px; 
+ }
+
+ .about p{
+    margin-top: 35px;
+ }
+ .contact{
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    line-height: 1;
+
+ }
+
+ .home img{
+    height: 25px;
+    width: 25px;
+    margin: 10px;
+ }
+ .home{
+    display: inline-block;
+ }
+
+ .image_float img{
+    border-radius: 20px;
+    height: 200px;
+    width: 300px;
+    margin: 20px;
+ }
+
+ .image_float{
+    margin-left:  10%;
+    margin-right:  10%;
+    width: 80%;
+    padding: 15px;
+    background-color: aliceblue;
+ }
+</style>
+</html>
