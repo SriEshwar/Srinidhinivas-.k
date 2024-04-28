@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="head_div">
+        <h1>colour  flipper</h1>
+        <h1 id="colournum"> #ffffff</h1>
+    </div>
+    <div id="screen">
+        
+        <button id="button">click me</button>
+    </div>
+
+    <style>
+        #head_div{
+            border-bottom: 5px solid black;
+        }
+        h1{
+            display: inline-block;
+            margin: 10px;
+        }
+        #colournum{
+            margin-left: 75%;
+        }
+        #screen{
+            background-color: white;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        button{
+            padding: 20px;
+            font-weight: bold;
+            border-radius: 20px;
+            background-color: black;
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+    
+    </style>
+
+    <script>
+        var colournum = document.getElementById("colournum");
+        var screencolour = document.getElementById("screen");
+        var button = document.getElementById("button");
+        var colourelements = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
+
+        button.addEventListener("click",function(){
+            var colourName = "#"
+            for(let i=1;i<=6;i++)
+            {  
+                var randomindex = Math.floor(Math.random()*16);
+                var randomelement = (colourelements[randomindex]);
+                colourName += randomelement
+            }
+            console.log(colourName);
+            colournum.innerHTML = colourName;
+            screencolour.style.backgroundColor = colourName;
+        })
+        
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1 id="heading"> EB bill calculator</h1>
+        <input placeholder="enter number of units :" id="units">
+        <button id="calculate">Calculate</button>
+        <h3 id="amount">The amount to be paid is :</h3>
+    </div>
+
+    <style>
+        *{background-color: black;}
+        div{
+            height: 350px;
+            width: 350px;
+            background-color: bisque;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 20px;
+        }
+        #units{
+            margin-top: 10%;
+            color: white;
+            padding: 10px;
+            font-weight: bold;
+            margin-left: 20%;
+        }
+        #heading{
+            margin-top: 10%;
+            color: black;
+            background-color: bisque;
+            margin-left: 15%;
+        }
+        #calculate{
+            height: 30px;
+            width: 150px;
+            margin-top: 10%;
+            color: bisque;
+            background-color: black;
+            margin-left: 25%;
+            border-radius: 20px;
+        }
+        #amount{
+            margin-top: 15%;
+            color: black;
+            background-color: bisque;
+            margin-left: 15%;
+        }
+    </style>
+
+    <script>
+        var amount = document.getElementById("amount");
+        var unit = Number(document.getElementById("units").value);
+        var button = document.getElementById("calculate");
+        var result;
+        button.addEventListener("click", function(){
+           
+            if(unit >=1  && unit <=50)
+                result = (unit*0.75);
+            else if(unit <=150)
+                 result = ((50*0.75) + (unit-50)*1);
+            else if(unit <=250)
+                 result = ((50*0.75) + (100*1) + (unit-150)*1.30);
+            else 
+                result = (unit*1.50);
+
+            console.log(result);
+            amount.innerHTML = `The amount to be paid is : ${result}`;
+        })
+             
+
+       
+    
+    </script>
+</body>
+</html>
