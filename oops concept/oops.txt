@@ -1,0 +1,334 @@
+-------------------OOPS---------------------------
+
+DEFINITION :
+       Object oriented is a methodology to design a program using classes and objects.It simplifies software development and maintenance by providing some concepts.
+
+WHY OOPS?
+      OOPS is needed to improve code readability and reusability and for security.
+
+OOPS CONCEPTS:
+
+         1.Object
+         2.Class
+         3.Inheritance
+         4.Abstraction
+         5.Encapsulation
+         6.Polymorphism
+
+1.OBJECT :
+
+       Definition : 
+                   
+                   Entity that has state (properties) and behaviour(functionalies).
+                   Object is an instance of class.
+
+       Real time example : 
+
+                   Person - state : black hair,blue eyes etc..  &   behaviour : walk() , sleep() , eat(), etc..
+
+       implementation : (creating object for a class)
+
+                   syntax : classname objname = new classname();
+
+
+2.CLASS :
+
+       Definition : 
+                   
+                   Class is a blueprint / template of a class.
+                   It contains variables , methods , constructor etc..
+                   contains similar type of objects having same state and behaviour.
+
+       Real time example : 
+
+                   if animal is the class, then dog is the object.
+                   if human is the class, then men is the object.
+                   if mobile is the class, samsung , nokia are the objects.
+                   (for better understanding , class is common noun and object is a proper noun)
+
+       implementation : (creating a class)
+
+                   class animal{
+
+                         int eyes=2,nose=1;
+                         void eat(){
+                               System.out.println("animal eats");
+                         }
+                    }
+                      
+                   //creating multiple objects
+
+                   animal dog = new animal();
+                   animal cat = new animal();
+    
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3.INHERITANCE :
+
+       Definition : 
+                   
+                   A concept in which a class inheriting all the properties and behaviour from its parent class.
+                   We can inherit the parent class properties using EXTENDS keyword.
+       
+       Types of inheritance :
+                  
+                  1.Single inheritance
+                  2.Multilevel inheritance
+                  3.Hierarchial inheritance
+                  4.Multiple inheritance
+                  5.Hybrid inheritance
+       Multiple and hybrid inheritance is not supported in java. we can achieve multiple inheritance using interface.
+
+                  
+
+       Real time example : 
+
+                   => Child inheriting all the character from parents.
+                   => Introducing new version of mobile phones by inheriting some features from its older versions and adding additional versions.
+
+       implementation : 
+
+
+class Employee {
+    String name;
+    int age;
+    double salary;
+
+    Employee(String name, int age, double salary) {
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
+    }
+
+    void displayDetails() {
+        System.out.println("Name: " + name + ", Age: " + age + ", Salary: " + salary);
+    }
+}
+
+class Manager extends Employee {
+    Manager(String name, int age, double salary) {
+        super(name, age, salary);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Manager manager = new Manager("nivas", 35, 80000);
+        manager.displayDetails();
+    }
+}
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4.ABSTRACION :
+
+       Definition : 
+                   
+                   Concept of hiding unnecessary details and showing only essential details to the user.
+                   We can achieve abstraction using abstract keyword.
+
+       Abstract class:
+                   => A class which is declared using abstract keyword is called abstract class.
+                   eg : abstract class main{}
+                   => Abstract class cannot be instantiated.
+                   => If a method is declared as abstract then the class should be a abstract class.
+                   => An abstract class can have abstract methods , non abstract methods , final methods etc..
+
+       Abstract method:
+                   =>A method which doesnot have defintion, contains only declaration.
+                   => We can define abstract methods using inheritance.
+
+       Real time example : 
+
+                   ATM machine
+                   Messenger
+
+       implementation : 
+
+                  => Create an abstract class and abstract methods which needs to be hided.
+                  => Define methods using inheritance.
+
+
+abstract class Employee {
+    String name;
+    double salary;
+
+    Employee(String name, double salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    abstract void displayDetails();
+}
+
+class Manager extends Employee {
+    Manager(String name, double salary) {
+        super(name, salary);
+    }
+
+    void displayDetails() {
+        System.out.println("Manager: " + name + ", Salary: $" + salary);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Manager manager = new Manager("nivas", 80000);
+        manager.displayDetails();
+    }
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+5.ENCAPSULATION :
+
+       Definition : 
+                   
+                   Concept of binding data together in a single unit.
+                   Similar to data hiding and also provides security.
+     
+       Real time example : 
+
+                   Gmail login
+                   User login
+
+       implementation : 
+
+                  => Inorder to achieve hiding , declare all the variables as private.
+                  => Use getter and setter method to assign and access the values of the variable.
+
+class encapsulation {
+ 
+private String name; 
+private int age,
+
+public void setname(String name)
+{ this.name name; }
+
+public void getname()
+(System.out.println(name); }
+
+public void setage( int age)
+{this.age age; }
+
+public void getage()
+{System.out.println(age); }
+}
+
+class HelloWorld {
+   public static void main(String[] args) {
+
+    encapsulation ex new encapsulation();
+
+  ex.setname("nivas");
+  ex.setage(21);
+  ex.getname();
+  ex.getage();
+
+}}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+6.POLYMORPHISM :
+
+       Definition : 
+                   
+                   Concept in which single action can be done in may ways.
+       
+
+       Types of polymorphism :
+                  
+                  1.Compile time polymorphism (Method overloading - method names are same but parameters are different)
+                  2.Runtime polymorphism (Method overriding - both method names and parameters are same)
+                  method overriding can be done using inheritance or interface.
+
+       Real time example : 
+
+                   Mobile phone -( message , voice call, video call )
+ 
+       implementation : 
+
+                  => Method overloading - create two methods who have same method name but different arguments.
+                  => Method overriding - create two methods who have same method name and same arguments but this is done using inheritance.
+
+
+OVERRIDING EXAMPLE CODE :
+
+class bank{
+    void intrest()
+   {
+       int intrest = 0;
+       System.out.println("rate of intrest of bank is intrest);
+   }
+}
+
+class sbi extends bank{
+
+     void intrest()
+    {
+        int intrest = 5;
+        System.out.println("rate of intrest of state bank is " +intrest);
+    }
+
+class cbi excends bank(
+      void intrest()       
+       {
+          int intrest = 7;
+           System.out.println("rate of intrest of centra bank is" + intrest);
+        }
+}
+
+class Helloworld {
+public static void main(String[] args) {
+      bank b = new bank();
+      sbi s = new sb1():
+      cbi c = new cbi():
+
+     b.intrest();
+     s.intrest():
+     c.intrest():
+}
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+OVER LOADING : 
+
+class Employee {
+    String name;
+    double salary;
+
+    Employee(String name, double salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    void displayDetails() {
+        System.out.println("Name: " + name + ", Salary: $" + salary);
+    }
+
+    void displayDetails(int age) {
+        System.out.println("Name: " + name + ", Age: " + age + ", Salary: $" + salary);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Employee emp1 = new Employee("sri", 60000);
+        Employee emp2 = new Employee("nivas", 55000);
+
+        emp1.displayDetails(); // Displaying details without age
+        emp2.displayDetails(25); // Displaying details with age
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+ PURPOSE OF OOPS CONCEPTS :
+
+1.ABSTRACTION - to make it user friendly and easily accessible
+2.INHERITANCE - code reusablity
+3.ENCAPSULATION - user friendly and security
+4.POLYMORPHISM - code reusability(method overriding) and code readability(method overloading).
+
+Access Modifiers :
+
+    1.public - accessible anywhere.
+    2.private - accessible only within the class.
+    3.default - accessible within the package.
+    4.protected - accessile within the package and outside the package only if it is inherited.
