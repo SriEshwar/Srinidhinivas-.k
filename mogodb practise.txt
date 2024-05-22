@@ -1,0 +1,775 @@
+PS C:\Users\Sundeep> mongosh
+Current Mongosh Log ID: 6644b2f016cabcdefa46b798
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.5
+Using MongoDB:          7.0.9
+Using Mongosh:          2.2.5
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-05-11T15:49:07.646+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs
+admin   40.00 KiB
+config  72.00 KiB
+local   72.00 KiB
+test> use appdb
+switched to db appdb
+appdb> db.users.insertOne({name : "nivas"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6644b7c116cabcdefa46b799')
+}
+appdb> show dbs
+admin   40.00 KiB
+appdb   40.00 KiB
+config  96.00 KiB
+local   72.00 KiB
+appdb> db.users.find()
+[ { _id: ObjectId('6644b7c116cabcdefa46b799'), name: 'nivas' } ]
+appdb> db.users.insertOne({name :"sri",age : 22, address : {colony : "ghouse colony" , street : 20/31},hobby : ["sleeping","eating"])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:125)
+
+> 1 | db.users.insertOne({name :"sri",age : 22, address : {colony : "ghouse colony" , street : 20/31},hobby : ["sleeping","eating"])
+    |                                                                                                                              ^
+  2 |
+
+appdb>  db.users.insertOne({name :"sri",age : 22, address : {colony : "ghouse colony" , street : 20/31},hobby : ["sleeping","eating"]})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6644b9f616cabcdefa46b79a')
+}
+appdb> db.users.find()
+[
+  { _id: ObjectId('6644b7c116cabcdefa46b799'), name: 'nivas' },
+  {
+    _id: ObjectId('6644b9f616cabcdefa46b79a'),
+    name: 'sri',
+    age: 22,
+    address: { colony: 'ghouse colony', street: 0.6451612903225806 },
+    hobby: [ 'sleeping', 'eating' ]
+  }
+]
+appdb> db.users.insertMany([{name :"vennila"},{name:"sathya"},{name:"sinehan"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6644bb5916cabcdefa46b79b'),
+    '1': ObjectId('6644bb5916cabcdefa46b79c'),
+    '2': ObjectId('6644bb5916cabcdefa46b79d')
+  }
+}
+appdb> db.users.find()
+[
+  { _id: ObjectId('6644b7c116cabcdefa46b799'), name: 'nivas' },
+  {
+    _id: ObjectId('6644b9f616cabcdefa46b79a'),
+    name: 'sri',
+    age: 22,
+    address: { colony: 'ghouse colony', street: 0.6451612903225806 },
+    hobby: [ 'sleeping', 'eating' ]
+  },
+  { _id: ObjectId('6644bb5916cabcdefa46b79b'), name: 'vennila' },
+  { _id: ObjectId('6644bb5916cabcdefa46b79c'), name: 'sathya' },
+  { _id: ObjectId('6644bb5916cabcdefa46b79d'), name: 'sinehan' }
+]
+appdb>  db.users.insertMany([{name :"krish",age : 55, address : {colony : "ckp" , street : 231},hobby : ["sleeping","girls"]},{name:"karnan",age:58,address:"{street:"ramasamy nagar",colony:43},hobby:["walking","exercise"]}])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:159)
+
+> 1 |  db.users.insertMany([{name :"krish",age : 55, address : {colony : "ckp" , street : 231},hobby : ["sleeping","girls"]},{name:"karnan",age:58,address:"{street:"ramasamy nagar",colony:43},hobby:["walking","exercise"]}])
+    |                                                                                                                                                                ^
+  2 |
+
+appdb>
+ 55, address : {colony : "ckp" , street : 231},hobby : ["sleeping","girls"]},{name:"karnan",age:58,address:"{street:"ramasamy nagar",colony:43},hobby:["walking","exercise"]}])
+appdb>
+
+appdb> appdb>  db.users.insertMany([{name :"krish",age : 55, address : {colony : "ckp" , street : 231},hobby : ["sleeping","girls"]},{name:"karnan",age:58,address:{street:"ramasamy nagar",colony:43},hobby:["walking","exercise"]}])
+ReferenceError: appdb is not defined
+appdb> use appdb
+already on db appdb
+appdb>  db.users.insertMany([{name :"krish",age : 55, address : {colony : "ckp" , street : 231},hobby : ["sleeping","girls"]},{name:"karnan",age:58,address:{street:"ramasamy nagar",colony:43},hobby:["walking","exercise"]}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6644be8616cabcdefa46b79e'),
+    '1': ObjectId('6644be8616cabcdefa46b79f')
+  }
+}
+appdb> db.users.find()
+[
+  { _id: ObjectId('6644b7c116cabcdefa46b799'), name: 'nivas' },
+  {
+    _id: ObjectId('6644b9f616cabcdefa46b79a'),
+    name: 'sri',
+    age: 22,
+    address: { colony: 'ghouse colony', street: 0.6451612903225806 },
+    hobby: [ 'sleeping', 'eating' ]
+  },
+  { _id: ObjectId('6644bb5916cabcdefa46b79b'), name: 'vennila' },
+  { _id: ObjectId('6644bb5916cabcdefa46b79c'), name: 'sathya' },
+  { _id: ObjectId('6644bb5916cabcdefa46b79d'), name: 'sinehan' },
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79e'),
+    name: 'krish',
+    age: 55,
+    address: { colony: 'ckp', street: 231 },
+    hobby: [ 'sleeping', 'girls' ]
+  },
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79f'),
+    name: 'karnan',
+    age: 58,
+    address: { street: 'ramasamy nagar', colony: 43 },
+    hobby: [ 'walking', 'exercise' ]
+  }
+]
+appdb> db.users.find().sort({name:1}).limit(3)
+[  
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79f'),
+    name: 'karnan',
+    age: 58,
+    address: { street: 'ramasamy nagar', colony: 43 },
+    hobby: [ 'walking', 'exercise' ]
+  },
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79e'),
+    name: 'krish',
+    age: 55,
+    address: { colony: 'ckp', street: 231 },
+    hobby: [ 'sleeping', 'girls' ]
+  },
+  { _id: ObjectId('6644b7c116cabcdefa46b799'), name: 'nivas' }
+]
+appdb> db.users.find().sort({)
+Uncaught:
+SyntaxError: Unexpected token (1:22)
+
+> 1 | db.users.find().sort({)
+    |                       ^
+  2 |
+
+appdb> db.users.find().sort({name:-1}).limit(4)
+[
+  { _id: ObjectId('6644bb5916cabcdefa46b79b'), name: 'vennila' },
+  {
+    _id: ObjectId('6644b9f616cabcdefa46b79a'),
+    name: 'sri',
+    age: 22,
+    address: { colony: 'ghouse colony', street: 0.6451612903225806 },
+    hobby: [ 'sleeping', 'eating' ]
+  },
+  { _id: ObjectId('6644bb5916cabcdefa46b79d'), name: 'sinehan' },
+  { _id: ObjectId('6644bb5916cabcdefa46b79c'), name: 'sathya' }
+]
+appdb> db.users.find().sort({age:-1},{name:-1}).limit(4)
+[  
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79f'),
+    name: 'karnan',
+    age: 58,
+    address: { street: 'ramasamy nagar', colony: 43 },
+    hobby: [ 'walking', 'exercise' ]
+  },
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79e'),
+    name: 'krish',
+    age: 55,
+    address: { colony: 'ckp', street: 231 },
+    hobby: [ 'sleeping', 'girls' ]
+  },
+  {
+    _id: ObjectId('6644b9f616cabcdefa46b79a'),
+    name: 'sri',
+    age: 22,
+    address: { colony: 'ghouse colony', street: 0.6451612903225806 },
+    hobby: [ 'sleeping', 'eating' ]
+  },
+  { _id: ObjectId('6644bb5916cabcdefa46b79c'), name: 'sathya' }
+]
+appdb> db.users.find({age:55})
+[
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79e'),
+    name: 'krish',
+    age: 55,
+    address: { colony: 'ckp', street: 231 },
+    hobby: [ 'sleeping', 'girls' ]
+  }
+]
+appdb> db.users.find({name:"sri"},{name :1,age:1})
+[ { _id: ObjectId('6644b9f616cabcdefa46b79a'), name: 'sri', age: 22 } ]
+appdb> db.users.find({name:"sri"},{name :1,age:1,_id :0})
+[ { name: 'sri', age: 22 } ]
+appdb> db.users.find({name:"sri"},{age:0})
+[
+  {
+    _id: ObjectId('6644b9f616cabcdefa46b79a'),
+    name: 'sri',
+    address: { colony: 'ghouse colony', street: 0.6451612903225806 },
+    hobby: [ 'sleeping', 'eating' ]
+  }
+]
+appdb> db.users.insertMany({name:"sneha",age:21,hobbies:["singing"],address:{street:"kovilpatti",city;"pollachi"},balance:100,dept:200},{name:"vishnu priya",age:31,hobbies:["coding"]hnu priya",age:31,hobbies:["coding"],address:{street:"anamalai",city;"pollachi"},balance:200,dept:0})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:94)
+
+> 1 | db.users.insertMany({name:"sneha",age:21,hobbies:["singing"],address:{street:"kovilpatti",city;"pollachi"},balance:100,dept:200},{name:"vishnu priya",age:31,hobbies:["coding"],address:{street:"anamalai",city;"pollachi"},balance:200,dept:0})
+    |                                                                                               ^
+  2 |
+
+appdb> db.users.insertMany([{name:"sneha",age:21,hobbies:["singing"],address:{street:"kovilpatti",city;"pollachi"},balance:100,dept:200},{name:"vishnu priya",age:31,hobbies:["coding"],address:{street:"anamalai",city;"pollachi"},balance:200,dept:0}])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:95)
+
+> 1 | db.users.insertMany([{name:"sneha",age:21,hobbies:["singing"],address:{street:"kovilpatti",city;"pollachi"},balance:100,dept:200},{name:"vishnu priya",age:31,hobbies:["coding"],address:{street:"anamalai",city;"pollachi"},balance:200,dept:0}])
+    |                                                                                                ^
+  2 |
+
+appdb> db.users.insertMany([{name:"sneha",age:21,hobbies:["singing"],address:{street:"kovilpatti",city:"pollachi"},balance:100,dept:200},{name:"vishnu priya",age:31,hobbies:["coding"],address:{street:"anamalai",city;"pollachi"},balance:200,dept:0}])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:208)
+
+> 1 | db.users.insertMany([{name:"sneha",age:21,hobbies:["singing"],address:{street:"kovilpatti",city:"pollachi"},balance:100,dept:200},{name:"vishnu priya",age:31,hobbies:["coding"],address:{street:"anamalai",city;"pollachi"},balance:200,dept:0}])
+    |
+                                                                    ^
+  2 |
+
+appdb> db.users.insertMany([{name:"sneha",age:21,hobbies:["singing"],address:{street:"kovilpatti",city:"pollachi"},balance:100,dept:200},{name:"vishnu priya",age:31,hobbies:["coding"],address:{street:"anamalai",city:"pollachi"},balance:200,dept:0}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6644c4ff16cabcdefa46b7a0'),
+    '1': ObjectId('6644c4ff16cabcdefa46b7a1')
+  }
+}
+appdb> db.users.find()
+[
+  { _id: ObjectId('6644b7c116cabcdefa46b799'), name: 'nivas' },
+  {
+    _id: ObjectId('6644b9f616cabcdefa46b79a'),
+    name: 'sri',
+    age: 22,
+    address: { colony: 'ghouse colony', street: 0.6451612903225806 },
+    hobby: [ 'sleeping', 'eating' ]
+  },
+  { _id: ObjectId('6644bb5916cabcdefa46b79b'), name: 'vennila' },
+  { _id: ObjectId('6644bb5916cabcdefa46b79c'), name: 'sathya' },
+  { _id: ObjectId('6644bb5916cabcdefa46b79d'), name: 'sinehan' },
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79e'),
+    name: 'krish',
+    age: 55,
+    address: { colony: 'ckp', street: 231 },
+    hobby: [ 'sleeping', 'girls' ]
+  },
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79f'),
+    name: 'karnan',
+    age: 58,
+    address: { street: 'ramasamy nagar', colony: 43 },
+    hobby: [ 'walking', 'exercise' ]
+  },
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a0'),
+    name: 'sneha',
+    age: 21,
+    hobbies: [ 'singing' ],
+    address: { street: 'kovilpatti', city: 'pollachi' },
+    balance: 100,
+    dept: 200
+  },
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a1'),
+    name: 'vishnu priya',
+    age: 31,
+    hobbies: [ 'coding' ],
+    address: { street: 'anamalai', city: 'pollachi' },
+    balance: 200,
+    dept: 0
+  }
+]
+appdb> db.users.find({name: {$eq:"sneha"})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:34)
+
+> 1 | db.users.find({name: {$eq:"sneha"})
+    |                                   ^
+  2 |
+
+appdb> db.users.find({name: {$eq:"sneha"}})
+[  
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a0'),
+    name: 'sneha',
+    age: 21,
+    hobbies: [ 'singing' ],
+    address: { street: 'kovilpatti', city: 'pollachi' },
+    balance: 100,
+    dept: 200
+  }
+]
+appdb> db.users.find({name: {$ne:"sneha"}})
+[
+  { _id: ObjectId('6644b7c116cabcdefa46b799'), name: 'nivas' },
+  {
+    _id: ObjectId('6644b9f616cabcdefa46b79a'),
+    name: 'sri',
+    age: 22,
+    address: { colony: 'ghouse colony', street: 0.6451612903225806 },
+    hobby: [ 'sleeping', 'eating' ]
+  },
+  { _id: ObjectId('6644bb5916cabcdefa46b79b'), name: 'vennila' },
+  { _id: ObjectId('6644bb5916cabcdefa46b79c'), name: 'sathya' },
+  { _id: ObjectId('6644bb5916cabcdefa46b79d'), name: 'sinehan' },
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79e'),
+    name: 'krish',
+    age: 55,
+    address: { colony: 'ckp', street: 231 },
+    hobby: [ 'sleeping', 'girls' ]
+  },
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79f'),
+    name: 'karnan',
+    age: 58,
+    address: { street: 'ramasamy nagar', colony: 43 },
+    hobby: [ 'walking', 'exercise' ]
+  },
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a1'),
+    name: 'vishnu priya',
+    age: 31,
+    hobbies: [ 'coding' ],
+    address: { street: 'anamalai', city: 'pollachi' },
+    balance: 200,
+    dept: 0
+  }
+]
+appdb> db.users.find({age: {$gt:"55"}})
+
+appdb> db.users.find({age: {$gt:55}})
+[  
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79f'),
+    name: 'karnan',
+    age: 58,
+    address: { street: 'ramasamy nagar', colony: 43 },
+    hobby: [ 'walking', 'exercise' ]
+  }
+]
+appdb> db.users.find({age: {$lt:55}})
+[  
+  {
+    _id: ObjectId('6644b9f616cabcdefa46b79a'),
+    name: 'sri',
+    age: 22,
+    address: { colony: 'ghouse colony', street: 0.6451612903225806 },
+    hobby: [ 'sleeping', 'eating' ]
+  },
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a0'),
+    name: 'sneha',
+    age: 21,
+    hobbies: [ 'singing' ],
+    address: { street: 'kovilpatti', city: 'pollachi' },
+    balance: 100,
+    dept: 200
+  },
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a1'),
+    name: 'vishnu priya',
+    age: 31,
+    hobbies: [ 'coding' ],
+    address: { street: 'anamalai', city: 'pollachi' },
+    balance: 200,
+    dept: 0
+  }
+]
+appdb> db.users.find({age: {$eq:55}})
+[  
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79e'),
+    name: 'krish',
+    age: 55,
+    address: { colony: 'ckp', street: 231 },
+    hobby: [ 'sleeping', 'girls' ]
+  }
+]
+appdb> db.users.find({name:{$in:["nivas","vennila"]}})
+[
+  { _id: ObjectId('6644b7c116cabcdefa46b799'), name: 'nivas' },
+  { _id: ObjectId('6644bb5916cabcdefa46b79b'), name: 'vennila' }
+]
+appdb> db.users.find({age:{$exists:true}})
+[  
+  {
+    _id: ObjectId('6644b9f616cabcdefa46b79a'),
+    name: 'sri',
+    age: 22,
+    address: { colony: 'ghouse colony', street: 0.6451612903225806 },
+    hobby: [ 'sleeping', 'eating' ]
+  },
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79e'),
+    name: 'krish',
+    age: 55,
+    address: { colony: 'ckp', street: 231 },
+    hobby: [ 'sleeping', 'girls' ]
+  },
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79f'),
+    name: 'karnan',
+    age: 58,
+    address: { street: 'ramasamy nagar', colony: 43 },
+    hobby: [ 'walking', 'exercise' ]
+  },
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a0'),
+    name: 'sneha',
+    age: 21,
+    hobbies: [ 'singing' ],
+    address: { street: 'kovilpatti', city: 'pollachi' },
+    balance: 100,
+    dept: 200
+  },
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a1'),
+    name: 'vishnu priya',
+    age: 31,
+    hobbies: [ 'coding' ],
+    address: { street: 'anamalai', city: 'pollachi' },
+    balance: 200,
+    dept: 0
+  }
+]
+appdb> db.users.find({age:{$lte:55,$gt:22}})
+[  
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79e'),
+    name: 'krish',
+    age: 55,
+    address: { colony: 'ckp', street: 231 },
+    hobby: [ 'sleeping', 'girls' ]
+  },
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a1'),
+    name: 'vishnu priya',
+    age: 31,
+    hobbies: [ 'coding' ],
+    address: { street: 'anamalai', city: 'pollachi' },
+    balance: 200,
+    dept: 0
+  }
+]
+appdb> db.users.find($or :{age:55},{name:vennila})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:18)
+
+> 1 | db.users.find($or :{age:55},{name:vennila})
+    |                   ^
+  2 |
+
+appdb> db.users.find($or :[{age:55},{name:vennila}])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:18)
+
+> 1 | db.users.find($or :[{age:55},{name:vennila}])
+    |                   ^
+  2 |
+
+appdb> db.users.find($or:  [{age:55},{name:"vennila"}])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:17)
+
+> 1 | db.users.find($or:  [{age:55},{name:"vennila"}])
+    |                  ^
+  2 |
+
+appdb> db.users.find({$or:  [{age:55},{name:"vennila"}]})
+[
+  { _id: ObjectId('6644bb5916cabcdefa46b79b'), name: 'vennila' },
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79e'),
+    name: 'krish',
+    age: 55,
+    address: { colony: 'ckp', street: 231 },
+    hobby: [ 'sleeping', 'girls' ]
+  }
+]
+appdb> db.users.find({age:{$not:{$lte:23}}})
+[
+  { _id: ObjectId('6644b7c116cabcdefa46b799'), name: 'nivas' },
+  { _id: ObjectId('6644bb5916cabcdefa46b79b'), name: 'vennila' },
+  { _id: ObjectId('6644bb5916cabcdefa46b79c'), name: 'sathya' },
+  { _id: ObjectId('6644bb5916cabcdefa46b79d'), name: 'sinehan' },
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79e'),
+    name: 'krish',
+    age: 55,
+    address: { colony: 'ckp', street: 231 },
+    hobby: [ 'sleeping', 'girls' ]
+  },
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79f'),
+    name: 'karnan',
+    age: 58,
+    address: { street: 'ramasamy nagar', colony: 43 },
+    hobby: [ 'walking', 'exercise' ]
+  },
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a1'),
+    name: 'vishnu priya',
+    age: 31,
+    hobbies: [ 'coding' ],
+    address: { street: 'anamalai', city: 'pollachi' },
+    balance: 200,
+    dept: 0
+  }
+]
+appdb>
+
+appdb> db.users.find({$expr: {$gt:["$dept", "$balance"]}})
+[  
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a0'),
+    name: 'sneha',
+    age: 21,
+    hobbies: [ 'singing' ],
+    address: { street: 'kovilpatti', city: 'pollachi' },
+    balance: 100,
+    dept: 200
+  }
+]
+appdb> db.users.find({"address.colony":"ckp"})
+[  
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79e'),
+    name: 'krish',
+    age: 55,
+    address: { colony: 'ckp', street: 231 },
+    hobby: [ 'sleeping', 'girls' ]
+  }
+]
+appdb> db.users.find({"address.colony":43})
+[  
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79f'),
+    name: 'karnan',
+    age: 58,
+    address: { street: 'ramasamy nagar', colony: 43 },
+    hobby: [ 'walking', 'exercise' ]
+  }
+]
+appdb> db.users.find({"address.city":"pollachi"})
+[  
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a0'),
+    name: 'sneha',
+    age: 21,
+    hobbies: [ 'singing' ],
+    address: { street: 'kovilpatti', city: 'pollachi' },
+    balance: 100,
+    dept: 200
+  },
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a1'),
+    name: 'vishnu priya',
+    age: 31,
+    hobbies: [ 'coding' ],
+    address: { street: 'anamalai', city: 'pollachi' },
+    balance: 200,
+    dept: 0
+  }
+]
+appdb> db.users.find({$expr : {$lt:["$balance","$dept"]}})
+[  
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a0'),
+    name: 'sneha',
+    age: 21,
+    hobbies: [ 'singing' ],
+    address: { street: 'kovilpatti', city: 'pollachi' },
+    balance: 100,
+    dept: 200
+  }
+]
+appdb> db.users.updateOne({dept:200}: {$set : {dept:300}})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:29)
+
+> 1 | db.users.updateOne({dept:200}: {$set : {dept:300}})
+    |                              ^
+  2 |
+
+appdb> db.users.updateOne({dept:200}, {$set : {dept:300}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+appdb> db.users.find({"name":"sneha"})
+[  
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a0'),
+    name: 'sneha',
+    age: 21,
+    hobbies: [ 'singing' ],
+    address: { street: 'kovilpatti', city: 'pollachi' },
+    balance: 100,
+    dept: 300
+  }
+]
+appdb> db.users.updateOne({ _id: ObjectId('6644c4ff16cabcdefa46b7a0')} , {"name":"snehaa"})
+MongoInvalidArgumentError: Update document requires atomic operators
+appdb> db.users.updateOne({ _id: ObjectId('6644c4ff16cabcdefa46b7a0')} , {$set: {"name":"snehaa"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+appdb> db.users.find({"name" : "snehaa"})
+[  
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a0'),
+    name: 'snehaa',
+    age: 21,
+    hobbies: [ 'singing' ],
+    address: { street: 'kovilpatti', city: 'pollachi' },
+    balance: 100,
+    dept: 300
+  }
+]
+appdb> db.users.updateOne({ _id: ObjectId('6644c4ff16cabcdefa46b7a0')} , {$rename: {"dept":"debt"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+appdb> db.users.find(   { _id: ObjectId('6644c4ff16cabcdefa46b7a0')})
+[  
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a0'),
+    name: 'snehaa',
+    age: 21,
+    hobbies: [ 'singing' ],
+    address: { street: 'kovilpatti', city: 'pollachi' },
+    balance: 100,
+    debt: 300
+  }
+]
+appdb> db.users.updateOne({ _id: ObjectId('6644c4ff16cabcdefa46b7a1')}, {$rename: {"dept" : "debt"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+appdb> db.users.updateOne({ _id: ObjectId('6644c4ff16cabcdefa46b7a0')} , {$push: {hobbies: "washing"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+appdb> db.users.find({ _id: ObjectId('6644c4ff16cabcdefa46b7a0')})
+[  
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a0'),
+    name: 'snehaa',
+    age: 21,
+    hobbies: [ 'singing', 'washing' ],
+    address: { street: 'kovilpatti', city: 'pollachi' },
+    balance: 100,
+    debt: 300
+  }
+]
+appdb> db.users.deleteOne({  _id: ObjectId('6644c4ff16cabcdefa46b7a0')} , {"age"})
+Uncaught:
+SyntaxError: Unexpected token (1:73)
+
+> 1 | db.users.deleteOne({  _id: ObjectId('6644c4ff16cabcdefa46b7a0')} , {"age"})
+    |                                                                          ^
+  2 |
+
+appdb> db.users.deleteOne({  _id: ObjectId('6644c4ff16cabcdefa46b7a0')} , {"age:21"})
+Uncaught:
+SyntaxError: Unexpected token (1:76)
+
+> 1 | db.users.deleteOne({  _id: ObjectId('6644c4ff16cabcdefa46b7a0')} , {"age:21"})
+    |                                                                             ^
+  2 |
+
+appdb> db.users.deleteOne({ _id: ObjectId('6644bb5916cabcdefa46b79d')})
+{ acknowledged: true, deletedCount: 1 }
+appdb> db.users.find()
+[
+  { _id: ObjectId('6644b7c116cabcdefa46b799'), name: 'nivas' },
+  {
+    _id: ObjectId('6644b9f616cabcdefa46b79a'),
+    name: 'sri',
+    age: 22,
+    address: { colony: 'ghouse colony', street: 0.6451612903225806 },
+    hobby: [ 'sleeping', 'eating' ]
+  },
+  { _id: ObjectId('6644bb5916cabcdefa46b79b'), name: 'vennila' },
+  { _id: ObjectId('6644bb5916cabcdefa46b79c'), name: 'sathya' },
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79e'),
+    name: 'krish',
+    age: 55,
+    address: { colony: 'ckp', street: 231 },
+    hobby: [ 'sleeping', 'girls' ]
+  },
+  {
+    _id: ObjectId('6644be8616cabcdefa46b79f'),
+    name: 'karnan',
+    age: 58,
+    address: { street: 'ramasamy nagar', colony: 43 },
+    hobby: [ 'walking', 'exercise' ]
+  },
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a0'),
+    name: 'snehaa',
+    age: 21,
+    hobbies: [ 'singing', 'washing' ],
+    address: { street: 'kovilpatti', city: 'pollachi' },
+    balance: 100,
+    debt: 300
+  },
+  {
+    _id: ObjectId('6644c4ff16cabcdefa46b7a1'),
+    name: 'vishnu priya',
+    age: 31,
+    hobbies: [ 'coding' ],
+    address: { street: 'anamalai', city: 'pollachi' },
+    balance: 200,
+    debt: 0
+  }
+]
+appdb> showbs
+ReferenceError: showbs is not defined
+appdb> show dbs
+admin   40.00 KiB
+appdb   72.00 KiB
+config  96.00 KiB
+local   72.00 KiB
+appdb> show collection
+MongoshInvalidInputError: [COMMON-10001] 'collection' is not a valid argument for "show".
+appdb> show collections
+users
+appdb> exit
+PS C:\Users\Sundeep> 
