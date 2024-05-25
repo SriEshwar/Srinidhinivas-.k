@@ -24,7 +24,8 @@ OOPS CONCEPTS:
 
        Real time example : 
 
-                   Person - state : black hair,blue eyes etc..  &   behaviour : walk() , sleep() , eat(), etc..
+                   Person - state : black hair,blue eyes etc..  
+                            behaviour : walk() , sleep() , eat(), etc..
 
        implementation : (creating object for a class)
 
@@ -48,18 +49,16 @@ OOPS CONCEPTS:
 
        implementation : (creating a class)
 
-                   class animal{
+                   class Employe{
 
-                         int eyes=2,nose=1;
-                         void eat(){
-                               System.out.println("animal eats");
-                         }
+                         int id=2,
+                         String name ='NIVAS";
                     }
                       
                    //creating multiple objects
 
-                   animal dog = new animal();
-                   animal cat = new animal();
+                   Employee manager = new Employee();
+                   Employee junior = new Employee();
     
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 3.INHERITANCE :
@@ -197,33 +196,34 @@ public class Main {
 
 class encapsulation {
  
-private String name; 
-private int age,
+    private String name; 
+    private int age;
 
-public void setname(String name)
-{ this.name name; }
+    public void setname(String name)
+        { this.name = name; }
 
-public void getname()
-(System.out.println(name); }
+      public void getname()
+        {System.out.println(name); }
 
-public void setage( int age)
-{this.age age; }
+    public void setage(int age)
+        {this.age = age; }
 
-public void getage()
-{System.out.println(age); }
+    public void getage()
+        {System.out.println(age); }
+
 }
+public class Main
+{
+	public static void main(String[] args) {
+	    
+   encapsulation example = new encapsulation();
 
-class HelloWorld {
-   public static void main(String[] args) {
-
-    encapsulation ex new encapsulation();
-
-  ex.setname("nivas");
-  ex.setage(21);
-  ex.getname();
-  ex.getage();
-
-}}
+   example.setname("nivas");
+   example.setage(21);
+   example.getname();
+   example.getage();
+	}
+}
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 6.POLYMORPHISM :
 
@@ -250,41 +250,47 @@ class HelloWorld {
 
 OVERRIDING EXAMPLE CODE :
 
-class bank{
+class Bank{
     void intrest()
    {
        int intrest = 0;
-       System.out.println("rate of intrest of bank is intrest);
+       System.out.println("rate of intrest of bank is "+ intrest);
    }
 }
 
-class sbi extends bank{
+class StateBank extends Bank{
 
      void intrest()
     {
         int intrest = 5;
         System.out.println("rate of intrest of state bank is " +intrest);
     }
+}
 
-class cbi excends bank(
+class CentralBank extends Bank{
       void intrest()       
        {
           int intrest = 7;
-           System.out.println("rate of intrest of centra bank is" + intrest);
+           System.out.println("rate of intrest of central bank is" + intrest);
         }
 }
 
-class Helloworld {
-public static void main(String[] args) {
-      bank b = new bank();
-      sbi s = new sb1():
-      cbi c = new cbi():
 
-     b.intrest();
-     s.intrest():
-     c.intrest():
+public class Main
+{
+	public static void main(String[] args) {
+	    
+	      Bank  bank = new Bank();
+          StateBank statebank = new   StateBank();
+          CentralBank centralbank = new CentralBank();
+
+          bank.intrest();
+          statebank.intrest();
+          centralbank.intrest();
+	
+	}
 }
-}
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
 OVER LOADING : 
