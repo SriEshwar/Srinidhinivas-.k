@@ -1,0 +1,162 @@
+Exception Handling
+
+To handle Exception using these keyword --> try ,  catch , finally
+sometimes use  --> try,throw,catch,finally  (thhroes)
+
+CHECKED EXCEPTION --(compile time )
+ 
+       
+       Filenotfound Exception
+       Sql Exception
+       Nullpointer Exception
+       IO Exception
+       Negativeindex Exception 
+     
+Unchecked Exception -- ( runtime ) 
+
+
+try{
+throw exception as object
+}
+catch(ArrayIndexOutofException object)
+{
+}
+catch(classNotFoundxception object1)
+{
+}
+catch(exception object2)
+{
+  // default catch so should given in end of the statement
+}
+
+
+try should come with catch or finally
+we can given nested try.
+
+Finally
+
+finally will work after try catch
+if try catch doesnot wrk finally will work  there is no connection between them.
+
+try
+......
+catch
+......
+finally
+
+
+Exception Propogation (throws)
+
+ nested try
+
+class Main{
+public static void main(String args[]){
+Scanner sc=new Scanner(System.in);
+int num1,num2,result;
+int []empId={2,3,4,5,6};
+try{
+num1=sc.nextInt();
+num2=sc.nextInt();
+result=num1/num2;
+System.out.print(empId[7]);
+}
+catch(ArithmeticException exception)
+{
+Sytsem.out.print(exception.getMessage())
+}
+catch(ArrayIndextOutOfBoundsException exception)
+{
+Sytsem.out.print(exception.getMessage())
+}
+Sytsem.out.print("The program eds in here");
+}
+}
+
+
+
+class Main{
+public static void main(String args[]) throws InsufficientFundException{
+Bank raj=new Bank();
+raj.balance=1000;
+try{
+raj.withdraw(1500);
+}
+catch(){
+}
+}
+
+class Bank{
+double balance;
+public void withdraw(double amount)throws InsufficientFundException
+{
+try{
+if(this.balance>amount)
+this.balance=this.balance-amount;
+else
+throw new InsufficientFundException("amount widthdraw is not possibile coz of limites amount in the balance");
+}
+}
+
+
+class InsufficientFundException extends Exception{
+String message="";
+InsufficientFundException (String exceptionMessage){
+this.message=exceptionMessage;
+}
+String getMessage(){
+return this.message;
+}
+
+
+
+
+
+
+
+
+
+
+/******************************************************************************
+
+                          can we use more than one finally block for try block
+*******************************************************************************/
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+        int []empId={2,3,4,5,6};
+        try{
+           System.out.print("employee 7 id",empId[7]);
+        }
+        finally{
+		System.out.println("Hello Raj");}
+		finally{
+		        System.out.print("this is your employee id ");
+		    }
+		}
+	
+}
+
+Compilation failed due to following error(s).Main.java:19: error: 'finally' without 'try'
+		    finally{
+		    ^
+1 error
+
+
+
+
+
+*******************************************************************************/
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    String message="Hii";
+	    try {
+    System.out.println(message.charAt(5));
+} finally {
+    System.out.println("Inside finally");
+}
+}
+	
